@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Altos salários: Executivo, Legislativo e militares</title>
+<link rel="stylesheet" href="style.css?v=20261016">
+<style>.topnav{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}.topnav a,a.cmpbtn{display:inline-block;border:1px solid #3a4352;border-radius:999px;padding:.35rem .85rem;color:inherit;text-decoration:none;font-size:.9rem}.topnav a:hover{background:rgba(124,58,237,.18)}a.cmpbtn{border:0;color:#fff;font-weight:600}table.list th:first-child,table.list td:first-child{min-width:0;position:static;text-align:right}</style>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Altos salários</h1>
+    <p class="sub">Quantas pessoas tiveram remuneração mensal acima de R$ 50 mil, por ano, no Executivo, no Legislativo (Senado) e entre os militares, com a lista nominal dos servidores. Dados publicados pelo próprio governo (Portal da Transparência e dados abertos do Senado).</p>
+  </div>
+  <nav class="topnav"><a href="index.html">Mapa</a><a href="entenda.html">Entenda</a><a href="vezes.html">Quantas vezes mais</a><a href="gestoras.html">Gestoras e donos</a><a href="salarios.html">Altos salários</a><a href="dados.html">Dados e fontes</a><a href="metodologia.html">Metodologia</a></nav>
+</header>
+<main>
+  <p class="cmp-sub"><b>Critério:</b> remuneração básica bruta + abate-teto + outras remunerações eventuais, sem 13º e férias, maior que R$ 50 mil em ao menos um mês do ano. Inclui verbas eventuais (retroativos, indenizações, abono), por isso os números variam muito entre anos. O teto constitucional é R$ 46.366,19.</p>
+  <h2 class="sec">Executivo civil: pessoas com algum mês acima de R$ 50 mil</h2>
+  <div class="tablewrap"><table id="s-civ" class="heat"></table></div>
+  <h2 class="sec">Legislativo (Senado) e militares</h2>
+  <div class="tablewrap"><table id="s-leg" class="heat"></table></div>
+  <h2 class="sec">Judiciário e Ministério Público: pessoas com algum mês acima de R$ 50 mil (bruto)</h2>
+  <p class="cmp-sub">Bruto = subsídio + benefícios do contracheque; os benefícios incluem 13º, férias, indenizações e retroativos. Fonte: DadosJusBr (contracheques enviados ao CNJ e ao CNMP).</p>
+  <div class="tablewrap"><table id="s-jud" class="heat"></table></div>
+  <h2 class="sec">Judiciário e MP: órgãos com mais pessoas acima de R$ 50 mil</h2>
+  <div class="cmp-ab"><label>Ano <select id="s-oy"></select></label></div>
+  <div class="tablewrap"><table id="s-orgao" class="list"></table></div>
+  <h2 class="sec">Lista nominal (maiores remunerações do ano)</h2>
+  <div class="cmp-ab"><label>Ano <select id="s-year"></select></label><label>Base <select id="s-base"><option value="civ">Executivo (civil)</option><option value="sen">Senado</option><option value="jud">Judiciário e Ministério Público</option></select></label><label>Buscar nome <input id="s-q" type="search" style="padding:.4rem;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)"></label></div>
+  <div class="tablewrap"><table id="s-list"></table></div>
+  <p class="foot">A página mostra as maiores 80 (Executivo) e 60 (Senado) remunerações de cada ano. A lista completa, com todos acima de R$ 50 mil, está nos arquivos: <a href="planilhas/executivo_acima_50mil.csv">executivo_acima_50mil.csv</a>, <a href="planilhas/senado_acima_50mil.csv">senado_acima_50mil.csv</a>, <a href="planilhas/judiciario_mp_acima_50mil.csv">judiciario_mp_acima_50mil.csv</a> (Judiciário e MP) e <a href="planilhas/judiciario_mp_acima_50mil.xlsx">judiciario_mp_acima_50mil.xlsx</a> e <a href="planilhas/altos_salarios_executivo_legislativo_militares.xlsx">altos_salarios_executivo_legislativo_militares.xlsx</a>. Câmara dos Deputados: o arquivo individual não é aberto (só consulta nominal). Aposentados e pensionistas civis só existem na base a partir de 2020; 2026 é parcial.</p>
+</main>
+<script src="data_salarios.js?v=20261016"></script>
+<script src="salarios.js?v=20261016"></script>
+</body>
+</html>

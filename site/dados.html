@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dados e fontes</title>
+<link rel="stylesheet" href="style.css?v=20261016">
+<style>.topnav{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}.topnav a,a.cmpbtn{display:inline-block;border:1px solid #3a4352;border-radius:999px;padding:.35rem .85rem;color:inherit;text-decoration:none;font-size:.9rem}.topnav a:hover{background:rgba(124,58,237,.18)}a.cmpbtn{border:0;color:#fff;font-weight:600}table.list th:first-child,table.list td:first-child{min-width:0;position:static;text-align:right}</style>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Dados e fontes</h1>
+    <p class="sub">Todas as planilhas, PDFs e bases usadas, com o link oficial para conferir direto na fonte. Informe abaixo a URL onde você hospedou uma cópia (VPS ou Google Drive) para gerar os links da sua cópia.</p>
+  </div>
+  <nav class="topnav"><a href="index.html">Mapa</a><a href="entenda.html">Entenda</a><a href="vezes.html">Quantas vezes mais</a><a href="gestoras.html">Gestoras e donos</a><a href="salarios.html">Altos salários</a><a href="dados.html">Dados e fontes</a><a href="metodologia.html">Metodologia</a></nav>
+</header>
+<main>
+  <section class="cmp-ctl">
+    <label style="flex:1;min-width:280px">URL base da sua cópia (ex.: https://seudominio.com.br/dados/ ou pasta do Drive)
+      <input id="dd-base" type="url" placeholder="https://..." style="width:100%;padding:.45rem;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)">
+    </label>
+    <label>Buscar
+      <input id="dd-q" type="search" placeholder="militares, renúncia, CVM…" style="padding:.45rem;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)">
+    </label>
+  </section>
+  <h2 class="sec">Planilhas geradas neste projeto</h2>
+  <div class="tablewrap"><table id="dd-plan"></table></div>
+  <h2 class="sec">Fontes e arquivos de origem</h2>
+  <div class="tablewrap"><table id="dd-src"></table></div>
+  <p class="foot">Os arquivos originais ficam na pasta <code>dados_portal/</code> do projeto. Para publicar uma cópia, envie a pasta inteira ao seu servidor mantendo a estrutura; a coluna "Sua cópia" usa a URL base informada acima. Os links oficiais funcionam mesmo sem cópia.</p>
+</main>
+<script src="data_fontes.js?v=20261016"></script>
+<script src="data_plan.js?v=20261016"></script>
+<script src="dados.js?v=20261016"></script>
+</body>
+</html>

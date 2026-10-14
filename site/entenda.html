@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entenda: por que o dinheiro público chega tão diferente a cada grupo</title>
+<meta name="description" content="Explicação simples, com números oficiais, de por que alguns grupos recebem muito mais por pessoa do que educação, saúde, assistência e segurança.">
+<link rel="stylesheet" href="style.css?v=20261016">
+<style>
+.topnav{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}.topnav a{display:inline-block;border:1px solid #3a4352;border-radius:999px;padding:.35rem .85rem;color:inherit;text-decoration:none;font-size:.9rem}
+.en{max-width:860px;margin:0 auto;padding:0 max(16px,4vw) 3rem;font-size:1.08rem;line-height:1.7}
+.en h2{font-size:1.5rem;margin:2.6rem 0 .4rem;letter-spacing:-.01em}
+.en .lead{font-size:1.25rem;color:var(--ink)}
+.en .muted{color:var(--muted);font-size:.92rem}
+.en .card2{border:1px solid var(--line);border-radius:16px;padding:1rem 1.2rem;background:var(--surface);box-shadow:var(--shadow);margin:1rem 0}
+.en select{font-size:1rem}
+.waffle{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;max-width:340px;margin:1rem 0}
+.waffle i{aspect-ratio:1;border-radius:4px;display:block}
+.wrow{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:1.5rem;align-items:start}
+.wleg{display:grid;gap:.45rem;font-size:1rem}
+.wleg div{display:grid;grid-template-columns:16px 1fr auto;gap:.6rem;align-items:center}
+.wleg i{width:14px;height:14px;border-radius:3px}
+.bars2{display:grid;gap:.6rem;margin-top:1rem}
+.b2{display:grid;grid-template-columns:minmax(150px,34%) 1fr;gap:.8rem;align-items:center}
+.b2 .bar{height:30px;border-radius:8px;position:relative;background:color-mix(in srgb,var(--line) 70%,transparent)}
+.b2 .bar i{display:block;height:100%;border-radius:8px}
+.b2 .bar em{position:absolute;right:.6rem;top:50%;transform:translateY(-50%);font-style:normal;font-weight:700}
+.b2 .l b{display:block;line-height:1.2}.b2 .l span{font-size:.82rem;color:var(--muted)}
+.big{font-size:2.4rem;font-weight:800;line-height:1.1}
+.call{display:grid;gap:.7rem;margin:1rem 0}
+.call div{border-left:6px solid #7c3aed;background:color-mix(in srgb,#7c3aed 9%,transparent);padding:.7rem 1rem;border-radius:10px}
+ol.why{padding-left:1.3rem}ol.why li{margin:.9rem 0}
+@media(max-width:700px){.wrow{grid-template-columns:1fr}.b2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Entenda em 2 minutos</h1>
+    <p class="sub">Por que o dinheiro público chega tão diferente a cada grupo, com números oficiais e sem jargão.</p>
+  </div>
+  <nav class="topnav"><a href="index.html">Mapa</a><a href="entenda.html">Entenda</a><a href="vezes.html">Quantas vezes mais</a><a href="gestoras.html">Gestoras e donos</a><a href="salarios.html">Altos salários</a><a href="dados.html">Dados e fontes</a><a href="metodologia.html">Metodologia</a></nav>
+</header>
+<main class="en">
+  <p class="lead">Todo ano o governo federal gasta trilhões de reais. Esta página mostra para onde vai esse dinheiro, quanto cada pessoa de cada grupo recebe por mês e por que a diferença é tão grande.</p>
+  <div class="card2">Ano a observar: <select id="en-year"></select> <span class="muted">(valores corrigidos pela inflação, em reais de 2025)</span></div>
+
+  <h2>1. Para onde vão os R$ 100 do governo federal</h2>
+  <p>Imagine que tudo o que a União gastou no ano coubesse em 100 quadradinhos. Cada quadrado é R$ 1 de cada R$ 100.</p>
+  <div class="wrow"><div><div class="waffle" id="en-waffle"></div><div class="muted" id="en-total"></div></div><div class="wleg" id="en-leg"></div></div>
+  <p class="muted">O total inclui os juros da dívida; não inclui a "rolagem" (troca de dívida velha por nova). "Saúde" e "educação" aqui são programas e repasses; os salários de médicos, professores e policiais federais estão no quadrado de salários. Fonte: Tesouro Nacional.</p>
+
+  <h2>2. Quanto cada pessoa recebe por mês</h2>
+  <p>Agora olhe grupo a grupo. Cada barra é o valor médio <b>por pessoa, por mês</b>, antes de impostos.</p>
+  <div class="bars2" id="en-bars"></div>
+  <p class="muted">Militares, servidores e INSS: valores pagos como remuneração, aposentadoria ou pensão. Bolsa Família e BPC: transferência de renda. Por aluno / por habitante: o gasto federal de cada área dividido pelas pessoas atendidas; <b>não é dinheiro que a pessoa recebe</b>, é quanto o governo federal gasta com cada uma.</p>
+
+  <h2>3. Quantas vezes mais</h2>
+  <div class="call" id="en-call"></div>
+
+  <h2>4. Por que isso acontece?</h2>
+  <p class="muted">São os fatores estruturais mais citados por órgãos como Tesouro Nacional, Banco Central e IPEA. Não é uma opinião política: é a forma como o dinheiro é regulado hoje.</p>
+  <ol class="why">
+    <li><b>Cada grupo tem uma regra diferente.</b> O INSS e o BPC são presos ao salário mínimo, então o valor por pessoa é baixo e igual para milhões. Servidores e militares têm carreiras, gratificações e aposentadorias definidas por leis próprias, com valores bem maiores por pessoa.</li>
+    <li><b>Quem recebe pouco, é muita gente; quem recebe muito, é pouca gente.</b> O Bolsa Família atende cerca de 18 milhões de famílias; os militares da reserva são cerca de 160 mil pessoas. Por isso um grupo pequeno pode custar tanto quanto um grupo enorme.</li>
+    <li><b>Saúde, educação e segurança são serviços para todos.</b> O gasto total é grande, mas dividido por toda a população (ou todos os alunos) o valor por pessoa fica pequeno. Além disso, a maior parte desses serviços é paga por estados e municípios, não pela União.</li>
+    <li><b>Parte do dinheiro já nasce comprometida.</b> Aposentadorias, salários e juros da dívida são obrigações. Sobra pouco para decidir de novo cada ano, e é nessa parte que entram saúde, educação e investimentos.</li>
+    <li><b>Juros da dívida pública.</b> Quando o governo gasta mais do que arrecada, ele pega emprestado e paga juros a quem empresta: bancos, fundos de investimento e investidores. Com juros altos, esse valor cresce e disputa espaço com as outras áreas.</li>
+    <li><b>Isenções fiscais.</b> O governo abre mão de parte dos impostos de certos setores e empresas. Não aparece como gasto, mas reduz o que entra e é concentrado: algumas dezenas de empresas respondem por mais da metade do valor declarado.</li>
+    <li><b>Remunerações acima do teto.</b> O teto do funcionalismo é R$ 46,4 mil por mês, mas há verbas "indenizatórias" e retroativas que ficam de fora do cálculo do teto. Por isso milhares de pessoas aparecem com meses acima de R$ 50 mil.</li>
+  </ol>
+
+  <h2>5. E os estados e municípios?</h2>
+  <p>O governo federal não é quem mais paga por saúde, educação e segurança no dia a dia. Cada quadro abaixo mostra quem pagou a despesa daquela área no ano: a União, os estados ou os municípios.</p>
+  <div class="card2" id="en-esf"></div>
+  <p class="muted" id="en-esfnote"></p>
+
+  <h2>6. Como ler esses números sem se enganar</h2>
+  <ul>
+    <li>Comparar "o que um militar recebe" com "o que o governo gasta por aluno" mostra proporção, não injustiça por si só: são coisas de natureza diferente.</li>
+    <li>Os dados são da União (governo federal). Estados e municípios gastam bastante mais em educação, saúde e segurança.</li>
+    <li>Isenção fiscal é imposto que deixou de ser cobrado, não dinheiro pago.</li>
+    <li>2026 ainda não terminou, e parte das bases só vai até 2025.</li>
+  </ul>
+  <p>Quer ver os números por trás? <a href="vezes.html">Quantas vezes mais</a>, <a href="index.html#comparar">Comparar quem recebe</a> e <a href="dados.html">todas as fontes</a>.</p>
+</main>
+<script src="data.js?v=20261016"></script>
+<script src="data_entenda.js?v=20261016"></script>
+<script src="data_entenda_esf.js?v=20261016"></script>
+<script src="entenda.js?v=20261016"></script>
+</body>
+</html>

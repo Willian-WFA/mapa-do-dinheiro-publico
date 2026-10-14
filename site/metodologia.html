@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metodologia e limites dos dados</title>
+<meta name="description" content="Como cada número foi calculado, o que é estimativa e o que ainda falta. Ajude a corrigir.">
+<link rel="stylesheet" href="style.css?v=20261016">
+<style>
+.topnav{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}.topnav a{display:inline-block;border:1px solid #3a4352;border-radius:999px;padding:.35rem .85rem;color:inherit;text-decoration:none;font-size:.9rem}.topnav a:hover{background:rgba(124,58,237,.18)}
+.mt{max-width:960px;margin:0 auto;padding:0 max(16px,4vw) 3rem;line-height:1.65}
+.mt h2{margin:2.2rem 0 .5rem}
+.mt table{width:100%;border-collapse:collapse;font-size:.95rem;margin:.6rem 0}
+.mt th,.mt td{border-bottom:1px solid var(--line);padding:.55rem .6rem;text-align:left;vertical-align:top}
+.tag{display:inline-block;border-radius:999px;padding:.1rem .6rem;font-size:.78rem;font-weight:700;color:#fff}
+.t-est{background:#b45309}.t-apx{background:#a16207}.t-par{background:#be123c}.t-ok{background:#15803d}.t-fal{background:#475569}
+.box{border:1px solid var(--line);border-radius:14px;padding:1rem 1.2rem;background:var(--surface);margin:1rem 0}
+</style>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Metodologia e limites</h1>
+    <p class="sub">O que cada número mede, o que é estimativa e o que ainda falta. Se você achar um erro, queremos saber.</p>
+  </div>
+  <nav class="topnav"><a href="index.html">Mapa</a><a href="entenda.html">Entenda</a><a href="vezes.html">Quantas vezes mais</a><a href="gestoras.html">Gestoras e donos</a><a href="salarios.html">Altos salários</a><a href="dados.html">Dados e fontes</a><a href="metodologia.html">Metodologia</a></nav>
+</header>
+<main class="mt">
+  <div class="box"><b>Como ajudar.</b> Este projeto é aberto à conferência. Todos os arquivos de origem e links oficiais estão em <a href="dados.html">Dados e fontes</a>. Ao encontrar uma divergência, anote o ano, o grupo, o valor que você achou e a fonte, e envie para quem mantém o projeto.</div>
+
+  <h2>Regras gerais</h2>
+  <ul>
+    <li><b>Valores reais:</b> corrigidos pelo IPCA para a média de 2025, salvo quando indicado "valores da época".</li>
+    <li><b>Por pessoa:</b> total pago ao grupo dividido pelo número de pessoas do grupo, antes de impostos.</li>
+    <li><b>Gasto por aluno / habitante:</b> gasto federal da área dividido pelas pessoas atendidas. Não é dinheiro que a pessoa recebe.</li>
+    <li><b>Isenção fiscal:</b> imposto que deixou de ser cobrado. Não é dinheiro pago.</li>
+    <li><b>Salário acima de R$ 50 mil (Executivo, Legislativo, militares):</b> remuneração básica bruta + abate-teto + outras verbas eventuais, sem 13º e férias.</li>
+    <li><b>Judiciário e MP:</b> valor bruto inclui 13º, férias e indenizações, então pode ser maior que nas demais listas.</li>
+  </ul>
+
+  <h2>Limites conhecidos</h2>
+  <table>
+    <thead><tr><th>Dado</th><th>Situação</th><th>O que isso significa</th></tr></thead>
+    <tbody>
+      <tr><td>Militares da reserva e pensionistas, antes de 2020</td><td><span class="tag t-est">Estimado</span></td><td>A quantidade foi estimada a partir de 2020 (marcada com "≈"). Os valores pagos vêm do orçamento e são oficiais.</td></tr>
+      <tr><td>Educação superior, educação básica 2023</td><td><span class="tag t-apx">Aproximado</span></td><td>Número de alunos aproximado por falha no download do INEP. Será trocado quando o arquivo oficial for obtido.</td></tr>
+      <tr><td>Planos de saúde (ANS)</td><td><span class="tag t-apx">Aproximado</span></td><td>Número de beneficiários aproximado, não usa a série completa da ANS.</td></tr>
+      <tr><td>"Bruto" do Judiciário e MP</td><td><span class="tag t-par">Inclui verbas pontuais</span></td><td>Soma salário e benefícios (13º, férias, indenizações). Um mês isolado pode estar muito acima do habitual.</td></tr>
+      <tr><td>Isenção fiscal declarada</td><td><span class="tag t-par">Parcial</span></td><td>2024 parcial; 2025 em diante sem dado. É o valor declarado pelas empresas, diferente do gasto tributário oficial (Receita, DGT).</td></tr>
+      <tr><td>Estados e municípios</td><td><span class="tag t-par">Anos incompletos</span></td><td>Usamos apenas anos com todos os entes entregues ao SICONFI. A coleta segue em andamento.</td></tr>
+      <tr><td>Servidores estaduais e municipais</td><td><span class="tag t-fal">Fora do escopo</span></td><td>Só entram Judiciário e MP estaduais (DadosJusBr).</td></tr>
+      <tr><td>Câmara dos Deputados (servidores)</td><td><span class="tag t-fal">Não disponível</span></td><td>Não há arquivo aberto da folha individual. Parlamentares entram pelos dados públicos disponíveis.</td></tr>
+      <tr><td>Segurança antes de 2008</td><td><span class="tag t-fal">Sem série aberta</span></td><td>Não encontramos série oficial por função em formato aberto para o período.</td></tr>
+      <tr><td>Pronaf / Plano Safra (nº de contratos)</td><td><span class="tag t-fal">Pendente</span></td><td>Valor por programa disponível; contagem de contratos depende da Matriz de Dados do Crédito Rural (Banco Central).</td></tr>
+      <tr><td>Patrimônio dos donos de bancos e gestoras</td><td><span class="tag t-par">Fotografias</span></td><td>Valores pontuais publicados por Forbes e Bloomberg; não há série contínua em fonte aberta.</td></tr>
+      <tr><td>2026</td><td><span class="tag t-par">Ano em curso</span></td><td>Valores parciais, dependem do mês de corte de cada base.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Conferências cruzadas planejadas</h2>
+  <p>Para dar credibilidade, os totais serão reconciliados com fontes independentes. O resultado de cada uma será publicado nesta página com a diferença em %.</p>
+  <table>
+    <thead><tr><th>Conferência</th><th>Fonte A</th><th>Fonte B</th><th>Estado</th></tr></thead>
+    <tbody>
+      <tr><td>Total da folha de pessoal</td><td>Portal da Transparência (SIAPE, militares)</td><td>Tesouro Nacional RTN, despesa de pessoal</td><td>A fazer</td></tr>
+      <tr><td>Soma por função (saúde, educação, segurança, assistência)</td><td>Despesas da União mensais</td><td>COFOG (2010–2024)</td><td>A fazer</td></tr>
+      <tr><td>Número de benefícios do INSS</td><td>Soma dos grupos do site</td><td>BEPS (benefícios emitidos)</td><td>A fazer</td></tr>
+      <tr><td>Isenção declarada</td><td>Renúncias por empresa</td><td>Gastos tributários da Receita (DGT)</td><td>A fazer</td></tr>
+    </tbody>
+  </table>
+  <p class="foot">Nenhuma dessas conferências foi concluída ainda; por isso aparecem como "A fazer", e não como confirmadas.</p>
+</main>
+</body>
+</html>

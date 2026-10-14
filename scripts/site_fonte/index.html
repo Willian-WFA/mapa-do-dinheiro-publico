@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa do dinheiro público federal, 1995–2026</title>
+<meta name="description" content="Para onde vai o dinheiro do governo federal: dívida, INSS, poderes, militares, isenções, Plano Safra, educação, saúde, segurança e assistência social, ano a ano.">
+<link rel="stylesheet" href="style.css?v=20261014">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Mapa do dinheiro público federal</h1>
+    <p class="sub">Quanto a União destinou a cada área e quantas pessoas ou empresas receberam, ano a ano, desde o primeiro ano com registro (a partir de 1995) até 2026. Clique em um grupo para ver os dados.</p>
+  </div>
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Tipo de valor">
+      <button id="btn-real" class="on" type="button">Reais (R$ de 2025)</button>
+      <button id="btn-nom" type="button">Nominais</button>
+    </div>
+    <button id="btn-cmp" class="cmpbtn" type="button">Comparar quem recebe</button>
+    <a class="cmpbtn" href="vezes.html" style="background:#0f766e">Quantas vezes mais</a>
+  </div>
+</header>
+
+<main>
+  <section class="board" aria-label="Grupos de gasto">
+    <div class="col left" id="col-left"></div>
+    <div class="center">
+      <svg id="mapa" viewBox="0 0 453 392" role="img" aria-label="Mapa do Brasil"></svg>
+      <div class="center-text">
+        <strong>BRASIL</strong>
+        <span id="center-sub">Orçamento da União</span>
+      </div>
+    </div>
+    <div class="col right" id="col-right"></div>
+  </section>
+
+  <section class="gov-strip" aria-label="Governos no período">
+    <span class="g g1">1995–2002 · FHC</span>
+    <span class="g g3">2003–2010 · Lula 1 e 2</span>
+    <span class="g g1">2011–2015 · Dilma</span>
+    <span class="g g3">2016–2018 · Temer</span>
+    <span class="g g1">2019–2022 · Bolsonaro</span>
+    <span class="g g4">2023–2026 · Lula 3</span>
+  </section>
+
+  <p class="foot">
+    Valores da União; estados e municípios não estão incluídos. 2026 é parcial. Fontes: Portal da Transparência, Tesouro Nacional, Banco Central, CVM, IBGE, INEP, Câmara e Senado.
+    Isenções refletem a renúncia declarada pelas empresas (2024 parcial). Dados em <code>data.js</code>.
+  </p>
+</main>
+
+<div id="cmp" class="modal" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="cmp-title" style="--c:#7c3aed">
+    <button class="close" id="cmp-close" type="button" aria-label="Fechar">×</button>
+    <h2 id="cmp-title">Comparar quem recebe</h2>
+    <p class="cmp-sub">Quantas pessoas (ou empresas) estão em cada grupo e quanto receberam no ano. Pagamentos de folha e benefícios aparecem junto com isenções fiscais (renúncia), que não são dinheiro pago, mas valor deixado de arrecadar.</p>
+    <div class="cmp-ctl">
+      <label>Ano <select id="cmp-year"></select></label>
+      <span id="cmp-groups" class="cmp-groups"></span>
+    </div>
+    <div class="cmp-pies">
+      <div><h3>Quanto cada grupo recebeu</h3><div id="cmp-pie-v"></div><div id="cmp-leg-v" class="pleg"></div></div>
+      <div><h3>Quantas pessoas há em cada grupo</h3><div id="cmp-pie-n"></div><div id="cmp-leg-n" class="pleg"></div></div>
+    </div>
+    <h2 class="sec">Quantas vezes mais, ano a ano</h2>
+    <p class="cmp-sub">Compara o valor recebido <b>por pessoa</b> em cada grupo com o gasto federal por pessoa atendida em educação, saúde, assistência ou segurança. Os grupos são comparados também pelo tamanho.</p>
+    <div class="cmp-ab"><label>Comparar com <select id="cmp-bench"></select></label></div>
+    <div class="legend" id="cmp-ratio-leg"></div>
+    <div class="chartwrap"><svg id="cmp-ratio" viewBox="0 0 860 340"></svg><div id="cmp-ratio-tip" class="tip" hidden></div></div>
+    <h3>Quantas vezes mais por pessoa (cada célula = ano)</h3>
+    <div class="tablewrap"><table id="cmp-heat"></table></div>
+    <h3 id="cmp-yr-title">Ano selecionado</h3>
+    <ul id="cmp-cards" class="cmp-cards"></ul>
+    <h3>Comparação direta</h3>
+    <div class="cmp-ab"><select id="cmp-a"></select><span>×</span><select id="cmp-b"></select></div>
+    <p id="cmp-sentence" class="cmp-sentence"></p>
+    <h3>Maiores contrastes do ano</h3>
+    <ol id="cmp-high" class="cmp-high"></ol>
+    <h3>Tabela</h3>
+    <div class="tablewrap"><table id="cmp-table"></table></div>
+    <ul id="cmp-notes" class="notes"></ul>
+  </div>
+</div>
+
+<div id="modal" class="modal" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="m-title">
+    <button class="close" id="m-close" type="button" aria-label="Fechar">×</button>
+    <div class="m-head">
+      <span id="m-icon" class="m-icon"></span>
+      <div>
+        <h2 id="m-title"></h2>
+        <p id="m-desc"></p>
+      </div>
+    </div>
+    <div class="kpis" id="m-kpis"></div>
+    <div class="tabs" id="m-tabs"></div>
+    <div id="m-pieyear" hidden></div>
+    <div class="chartwrap">
+      <div class="legend" id="m-legend"></div>
+      <svg id="m-chart" viewBox="0 0 860 330" preserveAspectRatio="xMidYMid meet"></svg>
+      <div id="m-tip" class="tip" hidden></div>
+    </div>
+    <h3>Ano a ano</h3>
+    <div class="tablewrap"><table id="m-table"></table></div>
+    <div class="actions"><button id="m-csv" type="button">Baixar CSV</button></div>
+    <div id="m-lists"></div>
+    <h3>Notas e fontes</h3>
+    <ul id="m-notes"></ul>
+  </div>
+</div>
+
+<script src="data.js?v=20261014"></script>
+<script src="brasil.js?v=20261014"></script>
+<script src="app.js?v=20261014"></script>
+</body>
+</html>

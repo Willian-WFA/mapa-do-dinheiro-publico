@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gestoras, donos e lucro dos bancos</title>
+<link rel="stylesheet" href="style.css?v=20261016">
+<style>.topnav{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}.topnav a,a.cmpbtn{display:inline-block;border:1px solid #3a4352;border-radius:999px;padding:.35rem .85rem;color:inherit;text-decoration:none;font-size:.9rem}.topnav a:hover{background:rgba(124,58,237,.18)}a.cmpbtn{border:0;color:#fff;font-weight:600}table.list th:first-child,table.list td:first-child{min-width:0;position:static;text-align:right}</style>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Gestoras, donos e lucro dos bancos</h1>
+    <p class="sub">Quem carrega os títulos da dívida pública em fundos (2005–2026), quem controla essas instituições e quanto lucraram, ano a ano. Fontes: CVM, Banco Central, Forbes, Bloomberg e documentos das companhias.</p>
+  </div>
+  <nav class="topnav"><a href="index.html">Mapa</a><a href="entenda.html">Entenda</a><a href="vezes.html">Quantas vezes mais</a><a href="gestoras.html">Gestoras e donos</a><a href="salarios.html">Altos salários</a><a href="dados.html">Dados e fontes</a><a href="metodologia.html">Metodologia</a></nav>
+</header>
+<main>
+  <h2 class="sec">Títulos públicos nas carteiras de fundos, por gestora (R$ bi)</h2>
+  <p class="cmp-sub">Cada linha é o total de títulos públicos federais nas carteiras de fundos geridos pelo grupo (posição de dezembro). "Sem gestor" são fundos sem gestor identificado no cadastro da CVM (fundos extintos ou classes novas); abaixo, quais são os maiores.</p>
+  <div class="legend" id="g-leg"></div>
+  <div class="chartwrap"><svg id="g-chart" viewBox="0 0 860 340"></svg><div id="g-tip" class="tip" hidden></div></div>
+  <div class="tablewrap"><table id="g-tab" class="heat"></table></div>
+  <h2 class="sec">Fundos de "Sem gestor" e das gestoras</h2>
+  <div class="cmp-ab"><label>Período <select id="g-per"></select></label><label>Grupo <select id="g-grp"></select></label></div>
+  <div class="tablewrap"><table id="g-funds"></table></div>
+  <h2 class="sec">Lucro líquido anual (R$ bi)</h2>
+  <div class="tablewrap"><table id="g-lucro" class="heat"></table></div>
+  <h2 class="sec">Donos e acionistas</h2>
+  <div class="tablewrap"><table id="g-donos"></table></div>
+  <h2 class="sec">Patrimônio dos donos (valores informados por Forbes e Bloomberg)</h2>
+  <div class="tablewrap"><table id="g-patr"></table></div>
+  <p class="foot">Percentuais de participação são da data indicada em cada fonte; não há série histórica contínua de patrimônio em fonte aberta. O lucro vem do Banco Central (IF.data, conglomerado prudencial) e pode diferir do balanço divulgado pelos bancos. Baixe a planilha completa em <a href="planilhas/gestoras_donos_lucro.xlsx">gestoras_donos_lucro.xlsx</a>.</p>
+</main>
+<script src="data_gestoras.js?v=20261016"></script>
+<script src="gestoras.js?v=20261016"></script>
+</body>
+</html>

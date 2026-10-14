@@ -1,0 +1,6 @@
+dados_portal/
+site.zip
+*.zip
+__pycache__/
+*.pyc
+v/

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantas vezes mais: quem recebe por pessoa, 2006–2025</title>
+<meta name="description" content="Quantas vezes mais por pessoa cada grupo recebe em comparação com o gasto público em educação, saúde, assistência e segurança, ano a ano.">
+<link rel="stylesheet" href="style.css?v=20261014">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Quantas vezes mais</h1>
+    <p class="sub">Quanto cada grupo recebe por pessoa em comparação com o gasto público por pessoa atendida em educação, saúde, assistência ou segurança, ano a ano.</p>
+  </div>
+  <div class="controls">
+    <a class="cmpbtn" href="index.html">← Voltar ao mapa</a>
+    <a class="cmpbtn" href="index.html#comparar" style="background:#475569">Comparar quem recebe</a>
+  </div>
+</header>
+<main>
+  <section class="vz-ctl">
+    <label>Comparar com <select id="vz-bench"></select></label>
+    <label class="vz-year">Ano <b id="vz-yearlbl"></b>
+      <input id="vz-year" type="range" min="2006" max="2025" step="1" value="2016">
+    </label>
+    <button id="vz-play" type="button" class="cmpbtn" style="background:#7c3aed">▶ Passar os anos</button>
+  </section>
+  <section id="vz-top" class="vz-top"></section>
+  <h2 class="sec" id="vz-t1">Ranking</h2>
+  <p class="cmp-sub" id="vz-explain"></p>
+  <div id="vz-bars" class="vz-bars"></div>
+  <h2 class="sec">Ao longo dos anos</h2>
+  <div class="legend" id="vz-leg"></div>
+  <div class="chartwrap"><svg id="vz-line" viewBox="0 0 860 340"></svg><div id="vz-tip" class="tip" hidden></div></div>
+  <h2 class="sec">Todos os anos de uma vez</h2>
+  <div class="tablewrap"><table id="vz-heat" class="heat"></table></div>
+  <p class="foot" id="vz-note"></p>
+</main>
+<script src="data.js?v=20261014"></script>
+<script src="vezes.js?v=20261014"></script>
+</body>
+</html>
