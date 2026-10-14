@@ -3,6 +3,18 @@
 var S=window.SAL, $=function(s){return document.querySelector(s)};
 function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
 function n(v){return v==null?'–':Number(v).toLocaleString('pt-BR')}
+
+function pad(m){return (m<10?'0':'')+m}
+function mes(y,m){return m?pad(m)+'/'+y:'–'}
+function ym(y,m){return y+pad(m)}
+function lnk(u,t){return '<a href="'+u+'" target="_blank" rel="noopener">'+esc(t)+'</a>'}
+function civUrl(y,m){return 'https://portaldatransparencia.gov.br/download-de-dados/servidores/'+ym(y,m)}
+function judUrl(o,y,m){return 'https://dadosjusbr.org/orgao/'+o+'/'+y+'/'+m}
+function verba(r){
+  if(!r[8]&&!r[9])return '<span class="muted">sem detalhe</span>';
+  var nm=(r[8]==null||r[8]==='0')?'verba sem descrição na fonte':r[8];
+  return esc(nm)+' <b>R$ '+n(r[9])+'</b>'+(r[10]?' <span title="Uma única verba responde por mais da metade do valor do mês" style="background:#b45309;color:#fff;border-radius:999px;padding:0 .45rem;font-size:.72rem">pontual</span>':'');
+}
 var Y=Object.keys(S.civ).sort();
 var T=['Servidor ativo (Executivo)','Servidor ativo (Banco Central)','Aposentado (Executivo)','Aposentado (Banco Central)','Pensionista (Executivo)','Pensionista (Banco Central)'];
 $('#s-civ').innerHTML='<thead><tr><th>Categoria</th>'+Y.map(function(y){return '<th>'+y+(y==='2026'?'*':'')+'</th>'}).join('')+'</tr></thead><tbody>'+
@@ -33,13 +45,13 @@ function list(){
   var y=sy.value,b=$('#s-base').value,q=$('#s-q').value.toLowerCase(),h;
   if(b==='civ'){
     var L=(S.top[y]||[]).filter(function(r){return !q||r[0].toLowerCase().indexOf(q)>=0});
-    h='<thead><tr><th>#</th><th>Nome</th><th>Categoria</th><th>Cargo</th><th>Órgão</th><th>Meses &gt; 50 mil</th><th>Maior mês (R$)</th></tr></thead><tbody>'+L.map(function(r,i){return '<tr><td>'+(i+1)+'</td><td style="text-align:left;white-space:normal">'+esc(r[0])+'</td><td style="text-align:left;white-space:normal">'+esc(r[1])+'</td><td style="text-align:left;white-space:normal">'+esc(r[2])+'</td><td style="text-align:left;white-space:normal">'+esc(r[3])+'</td><td>'+r[4]+'</td><td>'+n(r[5])+'</td></tr>'}).join('')+'</tbody>';
+    h='<thead><tr><th>#</th><th>Nome</th><th>Categoria</th><th>Cargo</th><th>Órgão</th><th>Meses &gt; 50 mil</th><th>Maior mês (R$)</th><th>Mês do maior valor</th><th>Fonte</th></tr></thead><tbody>'+L.map(function(r,i){return '<tr><td>'+(i+1)+'</td><td style="text-align:left;white-space:normal">'+esc(r[0])+'</td><td style="text-align:left;white-space:normal">'+esc(r[1])+'</td><td style="text-align:left;white-space:normal">'+esc(r[2])+'</td><td style="text-align:left;white-space:normal">'+esc(r[3])+'</td><td>'+r[4]+'</td><td>'+n(r[5])+'</td><td>'+mes(y,r[6])+'</td><td>'+lnk(civUrl(y,r[6]),r[7]?ym(y,r[6])+'_'+r[7]:'Portal')+'</td></tr>'}).join('')+'</tbody>';
   }else if(b==='jud'){
     var L3=(S.jud_top[y]||[]).filter(function(r){return !q||r[0].toLowerCase().indexOf(q)>=0});
-    h='<thead><tr><th>#</th><th>Nome</th><th>Ramo</th><th>Função</th><th>Órgão</th><th>Meses &gt; 50 mil</th><th>Maior mês bruto (R$)</th></tr></thead><tbody>'+L3.map(function(r,i){return '<tr><td>'+(i+1)+'</td><td style="text-align:left;white-space:normal">'+esc(r[0])+'</td><td style="text-align:left;white-space:normal">'+esc(r[1])+'</td><td style="text-align:left;white-space:normal">'+esc(r[2])+'</td><td>'+esc(r[3])+'</td><td>'+r[4]+'</td><td>'+n(r[5])+'</td></tr>'}).join('')+'</tbody>';
+    h='<thead><tr><th>#</th><th>Nome</th><th>Ramo</th><th>Função</th><th>Órgão</th><th>Meses &gt; 50 mil</th><th>Maior mês bruto (R$)</th><th>Mês</th><th>Verba principal do mês</th><th>Fonte</th></tr></thead><tbody>'+L3.map(function(r,i){return '<tr><td>'+(i+1)+'</td><td style="text-align:left;white-space:normal">'+esc(r[0])+'</td><td style="text-align:left;white-space:normal">'+esc(r[1])+'</td><td style="text-align:left;white-space:normal">'+esc(r[2])+'</td><td>'+esc(r[3])+'</td><td>'+r[4]+'</td><td>'+n(r[5])+'</td><td>'+mes(y,r[6])+'</td><td style="text-align:left;white-space:normal">'+verba(r)+'</td><td>'+lnk(judUrl(r[3],y,r[6]),r[7]||'DadosJusBr')+'</td></tr>'}).join('')+'</tbody>';
   }else{
     var L2=(S.sen_top[y]||[]).filter(function(r){return !q||r[0].toLowerCase().indexOf(q)>=0});
-    h='<thead><tr><th>#</th><th>Nome</th><th>Meses &gt; 50 mil</th><th>Maior mês bruto (R$)</th></tr></thead><tbody>'+L2.map(function(r,i){return '<tr><td>'+(i+1)+'</td><td style="text-align:left;white-space:normal">'+esc(r[0])+'</td><td>'+r[1]+'</td><td>'+n(r[2])+'</td></tr>'}).join('')+'</tbody>';
+    h='<thead><tr><th>#</th><th>Nome</th><th>Meses &gt; 50 mil</th><th>Maior mês bruto (R$)</th><th>Mês</th><th>Folha</th><th>Fonte</th></tr></thead><tbody>'+L2.map(function(r,i){return '<tr><td>'+(i+1)+'</td><td style="text-align:left;white-space:normal">'+esc(r[0])+'</td><td>'+r[1]+'</td><td>'+n(r[2])+'</td><td>'+mes(y,r[3])+'</td><td>'+esc(r[4])+'</td><td>'+lnk('https://adm.senado.gov.br/adm-dadosabertos/api/v1/servidores/remuneracoes/'+y+'/'+r[3],'API Senado')+'</td></tr>'}).join('')+'</tbody>';
   }
   $('#s-list').className='list'; $('#s-list').innerHTML=h;
 }
