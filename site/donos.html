@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Donos e executivos</title>
+<meta name="description" content="Quem controla bancos e grandes empresas beneficiadas, quanto a administração recebe e como isso evolui entre governos, com base nos documentos oficiais da CVM.">
+<link rel="stylesheet" href="style.css?v=20261016">
+<style>
+.topnav{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}.topnav a{display:inline-block;border:1px solid #3a4352;border-radius:999px;padding:.35rem .85rem;color:inherit;text-decoration:none;font-size:.9rem}.topnav a:hover{background:rgba(124,58,237,.18)}
+.pr{max-width:1000px;margin:0 auto;padding:0 max(16px,4vw) 3rem;line-height:1.6}
+.pr h2{font-size:1.4rem;margin:2.4rem 0 .4rem}
+.pr .muted{color:var(--muted);font-size:.9rem}
+.pr select{font-size:1rem}
+.ctl{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;border:1px solid var(--line);border-radius:14px;padding:.8rem 1rem;background:var(--surface);margin:.8rem 0}
+.bars2{display:grid;gap:.5rem;margin:1rem 0}
+.b2{display:grid;grid-template-columns:minmax(120px,26%) 1fr;gap:.8rem;align-items:center}
+.b2 .bar{height:30px;border-radius:8px;position:relative;background:color-mix(in srgb,var(--line) 70%,transparent)}
+.b2 .bar i{display:block;height:100%;border-radius:8px;background:#0e7490}
+.b2 .bar i.neg{background:#be123c}
+.b2 .bar i.top{background:#15803d}
+.b2 .bar em{position:absolute;right:.6rem;top:50%;transform:translateY(-50%);font-style:normal;font-weight:700;font-size:.92rem}
+.b2 .l b{display:block;line-height:1.2}.b2 .l span{font-size:.8rem;color:var(--muted)}
+.call{display:grid;gap:.6rem;margin:1rem 0}
+.call div{border-left:6px solid #7c3aed;background:color-mix(in srgb,#7c3aed 9%,transparent);padding:.6rem .9rem;border-radius:10px}
+.tw{overflow-x:auto}
+table.pt{border-collapse:collapse;font-size:.88rem;min-width:100%}
+table.pt th,table.pt td{border-bottom:1px solid var(--line);padding:.4rem .55rem;text-align:right;white-space:nowrap}
+table.pt th:first-child,table.pt td:first-child{text-align:left}
+table.pt td small{display:block;font-size:.74rem}
+.up{color:#15803d}.dn{color:#be123c}
+.tag{display:inline-block;border-radius:999px;padding:.05rem .55rem;font-size:.74rem;font-weight:700;color:#fff;background:#b45309}
+.tag.s{background:#be123c}.tag.v{background:#475569}
+.warn{border:1px solid #b45309;border-radius:12px;padding:.8rem 1rem;background:color-mix(in srgb,#b45309 10%,transparent);margin:1rem 0}
+table.sg{width:100%;border-collapse:collapse;font-size:.9rem}
+table.sg th,table.sg td{border-bottom:1px solid var(--line);padding:.45rem .5rem;text-align:left;vertical-align:top}
+table.sg td.r{text-align:right;white-space:nowrap}
+</style>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Donos e executivos</h1>
+    <p class="sub">Quem controla bancos e grandes empresas beneficiadas e quanto a administração recebe, ano a ano, com base nos documentos oficiais entregues à CVM.</p>
+  </div>
+  <nav class="topnav"><a href="index.html">Mapa</a><a href="entenda.html">Entenda</a><a href="vezes.html">Quantas vezes mais</a><a href="presidentes.html">Presidentes</a><a href="donos.html">Donos e executivos</a><a href="gestoras.html">Gestoras e donos</a><a href="salarios.html">Altos salários</a><a href="dados.html">Dados e fontes</a><a href="metodologia.html">Metodologia</a></nav>
+</header>
+<main class="pr">
+  <div class="warn"><b>Escopo e limites.</b> Só entram informações que a própria empresa é obrigada a divulgar à CVM (Formulário de Referência): acionistas e controladores, e a remuneração <b>total por órgão</b> (Conselho e Diretoria). Não há CPF, endereço, dados de familiares ou qualquer informação privada. Quem aparece como pessoa física é quem consta no documento da companhia como acionista. A página <b>não afirma</b> que uma pessoa foi beneficiada por um governo: mostra, lado a lado, valores por período.</div>
+  <div class="ctl"><label>Empresa <select id="d-emp"></select></label><label>Composição acionária em <select id="d-ano"></select></label></div>
+  <h2>1. Quem controla</h2>
+  <p class="muted" id="d-anote"></p>
+  <div class="tw"><table class="sg" id="d-acion"></table></div>
+  <h2>2. Quanto a administração recebe</h2>
+  <p class="muted">Total declarado por órgão no exercício social e média por membro remunerado. Valores corrigidos pelo IPCA para 2025. Inclui salário, bônus, participação nos resultados e remuneração em ações, conforme cada empresa informa.</p>
+  <div class="tw"><table class="sg" id="d-rem"></table></div>
+  <h2>3. Isenção fiscal e lucro, por ano</h2>
+  <div class="tw"><table class="sg" id="d-fin"></table></div>
+  <p class="muted" id="d-fnote"></p>
+  <h2>4. Por mandato</h2>
+  <p class="muted">Média anual dos valores acima (reais de 2025), por período de governo. É uma leitura descritiva: lucros e remunerações dependem de juros, câmbio, economia e decisões da própria empresa.</p>
+  <div class="tw"><table class="sg" id="d-gov"></table></div>
+  <h2>5. Patrimônio e família</h2>
+  <p>O patrimônio de bilionários não é documento oficial: vem de estimativas da Forbes e da Bloomberg e não há série contínua em fonte aberta. As fotografias que reunimos estão em <a href="gestoras.html">Gestoras e donos</a>, com o link de cada reportagem. Informações familiares não são coletadas além do que consta nos documentos da empresa (por exemplo, quando o controle é exercido por um grupo familiar ou fundação).</p>
+  <h2>Como conferir</h2>
+  <p>Fonte: <a href="https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/FRE/DADOS/" target="_blank" rel="noopener">CVM, Formulário de Referência (dados abertos)</a>, arquivos <code>posicao_acionaria</code> e <code>remuneracao_total_orgao</code>, 2010 a 2026. Isenção: renúncias declaradas por empresa (Portal da Transparência). Lucro dos bancos: Banco Central (IF.data).</p>
+</main>
+<script src="data.js?v=20261016"></script>
+<script src="data_donos.js?v=20261016"></script>
+<script src="donos.js?v=20261016"></script>
+</body>
+</html>
