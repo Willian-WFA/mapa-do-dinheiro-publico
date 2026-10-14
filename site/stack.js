@@ -1,0 +1,1 @@
+(function(){document.querySelectorAll('table.stack').forEach(function(t){var h=[].map.call(t.querySelectorAll('thead th'),function(x){return x.textContent});t.querySelectorAll('tbody tr').forEach(function(r){[].forEach.call(r.children,function(c,i){c.setAttribute('data-l',h[i]||'')})})})})();
