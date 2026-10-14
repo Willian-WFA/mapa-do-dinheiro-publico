@@ -9,7 +9,7 @@ python3 -I presidentes_data.py > /dev/null 2>&1
 python3 -I donos_data.py > /dev/null 2>&1
 DEST="/media/hitsuzen/Novo volume/money/site"
 mkdir -p "$DEST"
-cp site/*.html site/*.js site/*.css "$DEST/" 2>/dev/null
+cp site/*.html site/*.js site/*.css site/*.webmanifest site/*.svg "$DEST/" 2>/dev/null
 cd "/media/hitsuzen/Novo volume/money" && rm -f site.zip && python3 -c "
 import zipfile,os
 z=zipfile.ZipFile('site.zip','w',zipfile.ZIP_DEFLATED)
