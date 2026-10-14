@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comparativo de presidentes</title>
+<meta name="description" content="Quanto cada governo federal aplicou em saúde, educação, segurança, assistência, INSS e infraestrutura, em valores corrigidos, e sinais estatísticos para checagem.">
+<link rel="stylesheet" href="style.css?v=20261016">
+<style>
+.topnav{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}.topnav a{display:inline-block;border:1px solid #3a4352;border-radius:999px;padding:.35rem .85rem;color:inherit;text-decoration:none;font-size:.9rem}.topnav a:hover{background:rgba(124,58,237,.18)}
+.pr{max-width:1000px;margin:0 auto;padding:0 max(16px,4vw) 3rem;line-height:1.6}
+.pr h2{font-size:1.4rem;margin:2.4rem 0 .4rem}
+.pr .muted{color:var(--muted);font-size:.9rem}
+.pr select{font-size:1rem}
+.ctl{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;border:1px solid var(--line);border-radius:14px;padding:.8rem 1rem;background:var(--surface);margin:.8rem 0}
+.bars2{display:grid;gap:.5rem;margin:1rem 0}
+.b2{display:grid;grid-template-columns:minmax(120px,26%) 1fr;gap:.8rem;align-items:center}
+.b2 .bar{height:30px;border-radius:8px;position:relative;background:color-mix(in srgb,var(--line) 70%,transparent)}
+.b2 .bar i{display:block;height:100%;border-radius:8px;background:#0e7490}
+.b2 .bar i.neg{background:#be123c}
+.b2 .bar i.top{background:#15803d}
+.b2 .bar em{position:absolute;right:.6rem;top:50%;transform:translateY(-50%);font-style:normal;font-weight:700;font-size:.92rem}
+.b2 .l b{display:block;line-height:1.2}.b2 .l span{font-size:.8rem;color:var(--muted)}
+.call{display:grid;gap:.6rem;margin:1rem 0}
+.call div{border-left:6px solid #7c3aed;background:color-mix(in srgb,#7c3aed 9%,transparent);padding:.6rem .9rem;border-radius:10px}
+.tw{overflow-x:auto}
+table.pt{border-collapse:collapse;font-size:.88rem;min-width:100%}
+table.pt th,table.pt td{border-bottom:1px solid var(--line);padding:.4rem .55rem;text-align:right;white-space:nowrap}
+table.pt th:first-child,table.pt td:first-child{text-align:left}
+table.pt td small{display:block;font-size:.74rem}
+.up{color:#15803d}.dn{color:#be123c}
+.tag{display:inline-block;border-radius:999px;padding:.05rem .55rem;font-size:.74rem;font-weight:700;color:#fff;background:#b45309}
+.tag.s{background:#be123c}.tag.v{background:#475569}
+.warn{border:1px solid #b45309;border-radius:12px;padding:.8rem 1rem;background:color-mix(in srgb,#b45309 10%,transparent);margin:1rem 0}
+table.sg{width:100%;border-collapse:collapse;font-size:.9rem}
+table.sg th,table.sg td{border-bottom:1px solid var(--line);padding:.45rem .5rem;text-align:left;vertical-align:top}
+table.sg td.r{text-align:right;white-space:nowrap}
+</style>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Comparativo de presidentes</h1>
+    <p class="sub">Quanto cada governo federal aplicou em saúde, educação, segurança, assistência, INSS e infraestrutura, e que sinais nos dados merecem checagem.</p>
+  </div>
+  <nav class="topnav"><a href="index.html">Mapa</a><a href="entenda.html">Entenda</a><a href="vezes.html">Quantas vezes mais</a><a href="presidentes.html">Presidentes</a><a href="gestoras.html">Gestoras e donos</a><a href="salarios.html">Altos salários</a><a href="dados.html">Dados e fontes</a><a href="metodologia.html">Metodologia</a></nav>
+</header>
+<main class="pr">
+  <div class="warn"><b>Leia antes.</b> Gasto federal depende também do Congresso, da economia, de obrigações legais (aposentadorias, pisos constitucionais) e de crises (pandemia). Esta página mostra <b>o que foi pago em cada período</b>; não atribui mérito ou culpa a uma pessoa. Valores corrigidos pelo IPCA para 2025.</div>
+
+  <h2>1. Quem aplicou mais, quem reduziu</h2>
+  <div class="ctl">
+    <label>Área <select id="p-area"></select></label>
+    <label>Medida <select id="p-met">
+      <option value="media">Média anual (R$ bi, valores de 2025)</option>
+      <option value="hab">Por habitante, por ano (R$)</option>
+      <option value="var">Variação da média frente ao mandato anterior (%)</option>
+      <option value="fim">Crescimento do primeiro ao último ano do mandato (%)</option>
+    </select></label>
+  </div>
+  <div class="bars2" id="p-bars"></div>
+  <div class="call" id="p-call"></div>
+  <p class="muted" id="p-note"></p>
+
+  <h2>2. Todas as áreas lado a lado</h2>
+  <p class="muted">Média anual em R$ bi (valores de 2025). Abaixo, a variação frente ao mandato anterior. Verde = aumento, vermelho = redução.</p>
+  <div class="tw"><table class="pt" id="p-matriz"></table></div>
+
+  <h2>3. Infraestrutura</h2>
+  <p>Aqui "infraestrutura" soma as funções do orçamento <b>Transporte, Energia, Saneamento, Habitação, Urbanismo e Comunicações</b> (valores efetivamente pagos, incluindo restos a pagar). Não inclui investimento de estatais como a Petrobras nem obras de estados e municípios.</p>
+  <div class="bars2" id="p-infra"></div>
+  <p class="muted">Série disponível a partir de 2008. Antes disso não há base aberta por função com a mesma definição.</p>
+
+  <h2>4. Sinais para checagem: quem surgiu ou disparou</h2>
+  <p>Procuramos, nos dados, empresas, órgãos e pessoas que <b>não apareciam e de repente aparecem em destaque</b>, ou que cresceram várias vezes de um ano para outro. Isso é um <b>sinal estatístico</b>, não prova de irregularidade: pode ser mudança de regra, reclassificação, pagamento retroativo ou falha da base.</p>
+  <div class="ctl"><label>Ano <select id="p-ano"></select></label><span class="muted" id="p-anonote"></span></div>
+  <h3>Empresas no top 50 de isenção fiscal</h3>
+  <div class="tw"><table class="sg" id="p-emp"></table></div>
+  <h3>Órgãos com salto de pessoas acima de R$ 50 mil por mês</h3>
+  <div class="tw"><table class="sg" id="p-org"></table></div>
+  <h3>Pessoas que aparecem pela primeira vez acima de R$ 50 mil</h3>
+  <div class="tw"><table class="sg" id="p-pes"></table></div>
+  <p class="muted" id="p-pnote"></p>
+
+  <h2>5. Limites desta comparação</h2>
+  <ul>
+    <li>Mandatos têm durações diferentes. Por isso usamos média anual e variação, não soma.</li>
+    <li>Dilma 2 aparece só com 2015 e 2016 fica de fora (ano de transição); Lula 3 vai até 2025 (2026 incompleto).</li>
+    <li>Segurança tem série a partir de 2008; infraestrutura também; isenção declarada, de 2015 a 2024. Onde não há dado completo do mandato, aparece "n/d".</li>
+    <li>Saúde e educação da União incluem repasses a estados e municípios. A maior parte do gasto nessas áreas é de estados e municípios (veja a página <a href="entenda.html">Entenda</a>).</li>
+    <li>Os sinais de órgãos e pessoas usam as listas acima de R$ 50 mil do projeto; a cobertura mensal das bases varia por ano, e anos com variação geral maior que 50% foram excluídos para não gerar falsos alertas.</li>
+  </ul>
+</main>
+<script src="data_presidentes.js?v=20261016"></script>
+<script src="presidentes.js?v=20261016"></script>
+</body>
+</html>

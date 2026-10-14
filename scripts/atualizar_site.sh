@@ -5,6 +5,7 @@ python3 -I subnational_agg.py > /dev/null 2>&1
 python3 -I compare_data.py > /dev/null 2>&1
 python3 -I export_data.py > /dev/null 2>&1
 python3 -I entenda_esfera.py > /dev/null 2>&1
+python3 -I presidentes_data.py > /dev/null 2>&1
 DEST="/media/hitsuzen/Novo volume/money/site"
 mkdir -p "$DEST"
 cp site/*.html site/*.js site/*.css "$DEST/" 2>/dev/null
